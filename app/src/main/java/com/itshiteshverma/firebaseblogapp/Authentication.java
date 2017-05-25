@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import io.fabric.sdk.android.Fabric;
 
 
 public class Authentication extends AppCompatActivity {
@@ -55,7 +58,7 @@ public class Authentication extends AppCompatActivity {
         progress.setMessage("Loging In");
         // progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progress.setIndeterminate(true);
-
+        Fabric.with(this, new Crashlytics());
         signInButton = (SignInButton) findViewById(R.id.glogin);
 
         databaseReference_User = FirebaseDatabase.getInstance().getReference().child("user");

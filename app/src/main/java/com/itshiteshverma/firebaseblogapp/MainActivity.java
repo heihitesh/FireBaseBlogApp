@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -107,6 +108,18 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         };
+
+        logUserintoFabrics();
+
+    }
+
+    private void logUserintoFabrics() {
+        // TODO: Use the current user's information
+        // You can call any combination of these three methods
+        Crashlytics.setUserIdentifier("123456");
+        Crashlytics.setUserEmail("itshiteshverma@gmail.com");
+        Crashlytics.setUserName("hitesh");
+
 
 
     }

@@ -33,6 +33,9 @@
             android:label="@string/title_activity_authentication"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SingleBlogView"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="37c9a9b41cb7bd615000898056699934352a4edc" />
     </application>
 
 </manifest>
