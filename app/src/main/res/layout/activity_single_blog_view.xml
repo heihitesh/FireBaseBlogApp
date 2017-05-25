@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="4dp"
+    tools:context="com.itshiteshverma.firebaseblogapp.SingleBlogView">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/imageViewImageSelect_Blog_Single"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/input_outline"
+                android:padding="10dp"
+                android:src="@drawable/add_photo" />
+
+
+            <TextView
+                android:id="@+id/tvTitle_Blog_single"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:hint="Post Title"
+                android:inputType="text"
+                android:padding="10dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvDescription_Blog_Single"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:layout_margin="5dp"
+                android:background="@drawable/input_outline"
+                android:ems="10"
+                android:gravity="top|left"
+                android:hint="Post Description : Empty"
+                android:inputType="textMultiLine"
+                android:padding="10dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/bRemovePost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:visibility="invisible"
+            android:text="Remove Post" />
+    </RelativeLayout>
+
+
+</LinearLayout>
