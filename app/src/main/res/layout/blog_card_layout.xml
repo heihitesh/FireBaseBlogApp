@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="15dp">
+
 
         <TextView
-            android:id="@+id/tvNameOftheUserPost"
+            android:id="@+id/imageTopDateCaption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#78191919"
             android:gravity="right"
-            android:padding="5dp"
-            android:text="Name"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:paddingRight="5dp"
+            android:text=""
+            android:textColor="#cbffffff" />
 
         <ImageView
             android:id="@+id/imageViewBlogPhoto"
@@ -26,26 +29,43 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
+            android:padding="1dp"
             android:scaleType="fitCenter"
             android:src="@drawable/photo_load" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvPost"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="Post Title"
-                android:textSize="19dp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/imageButtonLikeBtn"
-                android:layout_toStartOf="@+id/imageButtonLikeBtn" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Post Title"
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNameOftheUserPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="10dp"
+                    android:text="Name"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
 
             <ImageButton
                 android:id="@+id/imageButtonLikeBtn"
@@ -54,21 +74,12 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:paddingRight="10dp"
                 android:background="@android:color/transparent"
+                android:paddingRight="10dp"
                 android:src="@drawable/thumbs_up_gray" />
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingEnd="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="Post Description" />
 
     </LinearLayout>
 

@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -27,10 +24,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PostActivity extends AppCompatActivity {
 
-    ImageButton imageButton;
     private static final int REUEST_CODE = 1;
+    ImageButton imageButton;
     EditText mTitle, mDescription;
     Uri uri = null;
     ProgressDialog mProgress;
@@ -99,12 +101,29 @@ public class PostActivity extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     //  Toast.makeText(PostActivity.this, "URL: "+downloadUrl, Toast.LENGTH_SHORT).show();
-                    DatabaseReference newPost = mDataBase.push(); //creates a unique no
-                    newPost.child("title").setValue(title);
-                    newPost.child("desc").setValue(des);
-                    newPost.child("image").setValue(downloadUrl.toString());
-                    newPost.child("UID").setValue(user.getUid());
-                    newPost.child("name").setValue(user.getDisplayName());
+//                    DatabaseReference newPost = mDataBase.push(); //creates a unique no
+//                    newPost.child("title").setValue(title);
+//                    newPost.child("desc").setValue(des);
+//                    newPost.child("image").setValue(downloadUrl.toString());
+//                    newPost.child("UID").setValue(user.getUid());
+//                    newPost.child("name").setValue(user.getDisplayName());
+
+                    String key = mDataBase.push().getKey(); // this will create a new unique key
+                    Map<String, Object> value = new HashMap<>();
+                    value.put("title", title);
+                    value.put("desc", des);
+                    value.put("image", downloadUrl.toString());
+                    value.put("name", user.getDisplayName());
+                    value.put("UID", user.getUid());
+
+                    SimpleDateFormat s = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+                    String format = s.format(new Date());
+
+                    value.put("timestamp", format);
+
+
+                    mDataBase.child(key).setValue(value);
+
 
                     mProgress.dismiss();
                     Toast.makeText(PostActivity.this, "Blog Posted Successfully", Toast.LENGTH_SHORT).show();

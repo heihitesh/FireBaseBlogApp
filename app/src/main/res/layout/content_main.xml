@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.itshiteshverma.firebaseblogapp.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvBlogList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rvBlogList">
-
+        android:layout_height="match_parent">
 
 
     </android.support.v7.widget.RecyclerView>

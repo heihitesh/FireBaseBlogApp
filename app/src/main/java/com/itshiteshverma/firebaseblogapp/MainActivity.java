@@ -1,23 +1,20 @@
 package com.itshiteshverma.firebaseblogapp;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,14 +39,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     TextView userName, userEmailId;
     CircleImageView userImage;
     RecyclerView mBlogList;
     DatabaseReference dataBaseReference_Blog, databaseReference_User, databaseReference_Likes;
     Query mQueryCurrentUser;
-
     boolean process_like = false;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,9 +202,9 @@ public class MainActivity extends AppCompatActivity
             protected void populateViewHolder(BlogViewHolder viewHolder, Blog_GetterSetter model, int position) {
                 final String post_key = getRef(position).getKey();
                 viewHolder.setTitle(model.getTitle());
-                viewHolder.setDesc(model.getDesc());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
                 viewHolder.setName(model.getName());
+                viewHolder.setTimeStamp(model.getTimestamp());
                 viewHolder.setLikeBtn(post_key);
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -261,21 +257,21 @@ public class MainActivity extends AppCompatActivity
 
         View mView;
         TextView title;
-        TextView desc;
         TextView userName;
         ImageView imageView;
         ImageButton likeBtn;
         DatabaseReference mDataBaseref;
         FirebaseAuth mAuth;
+        TextView DateCaption;
 
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             title = (TextView) mView.findViewById(R.id.tvPost);
-            desc = (TextView) mView.findViewById(R.id.tvDescription);
             imageView = (ImageView) mView.findViewById(R.id.imageViewBlogPhoto);
             userName = (TextView) mView.findViewById(R.id.tvNameOftheUserPost);
             likeBtn = (ImageButton) mView.findViewById(R.id.imageButtonLikeBtn);
+            DateCaption = (TextView) mView.findViewById(R.id.imageTopDateCaption);
 
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -321,8 +317,8 @@ public class MainActivity extends AppCompatActivity
             title.setText(Title);
         }
 
-        public void setDesc(String Desc) {
-            desc.setText(Desc);
+        public void setTimeStamp(String date) {
+            DateCaption.setText(date);
         }
 
         public void setImage(Context applicationContext, String image) {
@@ -333,5 +329,7 @@ public class MainActivity extends AppCompatActivity
                     .placeholder(R.drawable.loading_animation)
                     .into(imageView);
         }
+
+
     }
 }

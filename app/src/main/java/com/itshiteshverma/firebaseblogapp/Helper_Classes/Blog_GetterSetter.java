@@ -1,5 +1,10 @@
 package com.itshiteshverma.firebaseblogapp.Helper_Classes;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Wilmar Africa Ltd on 23-05-17.
  */
@@ -7,17 +12,16 @@ package com.itshiteshverma.firebaseblogapp.Helper_Classes;
 public class Blog_GetterSetter {
 
     private String title;
-    private String desc;
     private String image;
     private String name;
+    private String timestamp;
 
     public Blog_GetterSetter(){
 
     }
 
-    public Blog_GetterSetter(String title, String desc, String image) {
+    public Blog_GetterSetter(String title, String image) {
         this.title = title;
-        this.desc = desc;
         this.image = image;
     }
 
@@ -31,13 +35,6 @@ public class Blog_GetterSetter {
         this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
     public String getImage() {
         return image;
@@ -54,5 +51,24 @@ public class Blog_GetterSetter {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTimestamp() {
+        DateFormat fromFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        fromFormat.setLenient(false);
+        DateFormat toFormat = new SimpleDateFormat("dd MMMM");
+        toFormat.setLenient(false);
+        String dateStr = timestamp;
+        Date date = null;
+        try {
+            date = fromFormat.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return toFormat.format(date);
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }
